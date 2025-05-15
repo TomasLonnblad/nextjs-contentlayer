@@ -12,7 +12,7 @@ export function ModeToggle() {
       <span className="sr-only">Toggle mode</span>
       {theme !== "dark" ? (
         <svg
-          xmlns="http://www.w3.org/2000/svg"
+          xmlns="https://tomaslonnblad.github.io/src/file.svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
