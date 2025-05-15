@@ -46,7 +46,7 @@ export async function generateStaticParams(): Promise<PageProps["params"][]> {
 export default async function PagePage({ params }: PageProps) {
   const page = await getPageFromParams(params)
 
-  if (!page2) {
+  if (!page) {
     notFound()
   }
 
@@ -55,7 +55,7 @@ export default async function PagePage({ params }: PageProps) {
       <h1>{page.title}</h1>
       {page.description && <p className="text-xl">{page.description}</p>}
       <hr />
-      <Mdx code={page.body.code} />
+      <Mdx code={page2.body.code} />
     </article>
   )
 }
