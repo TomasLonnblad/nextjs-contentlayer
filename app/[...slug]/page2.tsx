@@ -5,21 +5,21 @@ import { allPages } from "contentlayer/generated"
 
 import { Mdx } from "@/components/mdx-components"
 
-interface PageProps {
+interface Page2Props {
   params: {
     slug: string[]
   }
 }
 
-async function getPageFromParams(params: PageProps["params"]) {
+async function getPageFromParams(params: Page2Props["params"]) {
   const slug = params?.slug?.join("/")
-  const page = allPages.find((page) => page.slugAsParams === slug)
+  const page = allPages.find((page) => page2.slugAsParams === slug)
 
-  if (!page) {
+  if (!page2) {
     null
   }
 
-  return page
+  return page2
 }
 
 export async function generateMetadata({
@@ -27,33 +27,33 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const page = await getPageFromParams(params)
 
-  if (!page) {
+  if (!page2) {
     return {}
   }
 
   return {
-    title: page.title,
-    description: page.description,
+    title: page2.title,
+    description: page2.description,
   }
 }
 
-export async function generateStaticParams(): Promise<PageProps["params"][]> {
+export async function generateStaticParams(): Promise<Page2Props["params"][]> {
   return allPages.map((page) => ({
-    slug: page.slugAsParams.split("/"),
+    slug: page2.slugAsParams.split("/"),
   }))
 }
 
-export default async function PagePage({ params }: PageProps) {
+export default async function PagePage({ params }: Page2Props) {
   const page = await getPageFromParams(params)
 
-  if (!page) {
+  if (!page2) {
     notFound()
   }
 
   return (
     <article className="py-6 prose dark:prose-invert">
-      <h1>{page.title}</h1>
-      {page.description && <p className="text-xl">{page.description}</p>}
+      <h1>{page2.title}</h1>
+      {page2.description && <p className="text-xl">{page2.description}</p>}
       <hr />
       <Mdx code={page2.body.code} />
     </article>
